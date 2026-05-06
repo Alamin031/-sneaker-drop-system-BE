@@ -4,6 +4,12 @@ The backend powers the Limited Edition Sneaker Drop inventory engine: drop creat
 
 For the full project overview, see the root [README.md](../README.md).
 
+## Live Deployment
+
+- Backend: `https://sneaker-drop-system-be.onrender.com`
+- Swagger UI: `https://sneaker-drop-system-be.onrender.com/api-docs`
+- OpenAPI JSON: `https://sneaker-drop-system-be.onrender.com/openapi.json`
+
 ## Stack
 
 - Node.js
@@ -201,7 +207,7 @@ Example production values:
 
 ```env
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/postgres?sslmode=require"
-CLIENT_URL="https://your-frontend.vercel.app"
+CLIENT_URL="https://sneaker-drop-system-fe.vercel.app/"
 PORT=10000
 ```
 
