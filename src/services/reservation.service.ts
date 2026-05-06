@@ -1,4 +1,4 @@
-import { ReservationStatus } from '@prisma/client';
+import { Prisma, ReservationStatus } from '@prisma/client';
 import { prisma } from '../prisma';
 import { emitStockUpdate } from '../socket';
 import { clearReservationExpiry, scheduleReservationExpiry } from './reservation-scheduler.service';
@@ -18,7 +18,7 @@ export function serializeReservation<T extends { id: string; userId: string; dro
 }
 
 export async function expireReservation(reservationId: string) {
-  const result = await prisma.$transaction(async (tx) => {
+  const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
     const now = new Date();
     const reservation = await tx.reservation.findUnique({
       where: {

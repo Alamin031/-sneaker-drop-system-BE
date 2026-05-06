@@ -146,7 +146,7 @@ export async function reserveDrop(input: ReserveDropInput) {
 
   const expiresAt = new Date(Date.now() + RESERVATION_WINDOW_MS);
 
-  const result = await prisma.$transaction(async (tx) => {
+  const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
     const user = await tx.user.findUnique({
       where: {
         id: input.userId,

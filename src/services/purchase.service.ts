@@ -1,4 +1,4 @@
-import { ReservationStatus } from '@prisma/client';
+import { Prisma, ReservationStatus } from '@prisma/client';
 import { prisma } from '../prisma';
 import { emitPurchaseUpdate, emitStockUpdate } from '../socket';
 import { AppError } from '../utils/app-error';
@@ -13,7 +13,7 @@ type PurchaseReservationInput = {
 export async function purchaseReservation(input: PurchaseReservationInput) {
   await refreshDropStatuses();
 
-  const result = await prisma.$transaction(async (tx) => {
+  const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
     const now = new Date();
     const reservation = await tx.reservation.findUnique({
       where: {
