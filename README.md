@@ -184,8 +184,10 @@ Render is a good fit for this backend because Socket.io needs a long-lived Node 
 Create a new Web Service and use:
 
 - Root Directory: `backend`
-- Build Command: `npm install && npm run prisma:generate && npm run build`
+- Build Command: `npm install`
 - Start Command: `npm run start`
+
+Note: this project runs `npm run build` automatically in a `postinstall` script, so `npm install` is enough to produce `dist/` on Render.
 
 ### Render environment variables
 
